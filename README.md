@@ -1,4 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lied - Grupo de Pagode
+
+[![Deploy](https://vercel.com/button)](https://vercel.com/import/project?template=nextjs)
+[![Next.js](https://img.shields.io/badge/Next.js-15.3.5-blue)](https://nextjs.org/)
+[![Node](https://img.shields.io/badge/Node-18%2B-green)](https://nodejs.org/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com/edilsonrogeriocuambes-projects/lied)
+
+> **Versão:** 0.1.0
+
+Site oficial do Grupo Lied, com galeria, vídeos, Spotify, membros, história, stories e mais. Feito com Next.js, React, Tailwind e Framer Motion.
+
+---
+
+## 🚀 Deploy na Vercel
+
+1. Instale a CLI da Vercel:
+   ```bash
+   npm install -g vercel
+   ```
+2. Faça login:
+   ```bash
+   vercel login
+   ```
+3. Faça o deploy:
+   ```bash
+   vercel --prod --yes
+   ```
+
+Ou conecte o repositório no painel da Vercel para deploy automático a cada push.
+
+---
+
+## 🛠️ Comandos úteis
+
+```bash
+npm run dev     # Desenvolvimento local
+npm run build   # Build de produção
+npm start       # Rodar build local
+npm run lint    # Checagem de código
+```
+
+---
+
+## 📦 Tecnologias
+- Next.js 15
+- React 19
+- Tailwind CSS 4
+- Framer Motion
+- Lucide Icons
+- Spotify Web API
+
+---
+
+## 📄 Licença
+
+MIT. Veja o arquivo [LICENSE](LICENSE).
+
+---
+
+## ✨ Sobre
+
+Projeto desenvolvido para o Grupo Lied, com foco em performance, SEO e experiência moderna.
 
 ## Getting Started
 
