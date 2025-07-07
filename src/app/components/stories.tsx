@@ -79,9 +79,21 @@ export function Stories() {
   const [muted, setMuted] = useState(false)
   const [progress, setProgress] = useState(0)
   const [liked, setLiked] = useState<Set<string>>(new Set())
+  const [loading, setLoading] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const currentStory = storiesData[active]
+
+  // Avançar/voltar tocando nas laterais (mobile UX)
+  const handleStoryClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const bounds = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - bounds.left;
+    if (x < bounds.width / 2) {
+      prevStory();
+    } else {
+      nextStory();
+    }
+  }
 
   const handlePlayPause = () => {
     if (videoRef.current) {
@@ -113,17 +125,25 @@ export function Stories() {
 
   const nextStory = () => {
     if (active < storiesData.length - 1) {
-      setActive(active + 1)
-      setPlaying(false)
-      setProgress(0)
+      setLoading(true);
+      setTimeout(() => {
+        setActive(active + 1)
+        setPlaying(false)
+        setProgress(0)
+        setLoading(false);
+      }, 400);
     }
   }
 
   const prevStory = () => {
     if (active > 0) {
-      setActive(active - 1)
-      setPlaying(false)
-      setProgress(0)
+      setLoading(true);
+      setTimeout(() => {
+        setActive(active - 1)
+        setPlaying(false)
+        setProgress(0)
+        setLoading(false);
+      }, 400);
     }
   }
 
@@ -133,7 +153,7 @@ export function Stories() {
     // Auto advance to next story
     if (active < storiesData.length - 1) {
       setTimeout(() => {
-        setActive(active + 1)
+        nextStory();
       }, 1000)
     }
   }
@@ -180,7 +200,13 @@ export function Stories() {
 
         {/* Main Story Player */}
         <div className="flex justify-center">
-          <div className="relative w-[320px] h-[570px] bg-black border-4 border-red-600 rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative w-[320px] h-[570px] bg-black border-4 border-red-600 rounded-3xl overflow-hidden shadow-2xl select-none" onClick={handleStoryClick}>
+            {/* Loading animation */}
+            {loading && (
+              <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-30">
+                <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin" />
+              </div>
+            )}
             {/* Progress Bar */}
             <div className="absolute top-0 left-0 right-0 z-20 p-4">
               <div className="flex gap-1">
@@ -199,7 +225,6 @@ export function Stories() {
                 ))}
               </div>
             </div>
-
             {/* Video Player */}
             <video
               ref={videoRef}
@@ -216,85 +241,34 @@ export function Stories() {
                   setProgress(progress)
                 }
               }}
+              muted={muted}
+              autoPlay={playing}
             />
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={prevStory}
-              disabled={active === 0}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-
-            <button
-              onClick={nextStory}
-              disabled={active === storiesData.length - 1}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-
-            {/* Play/Pause Button */}
-            <button
-              onClick={handlePlayPause}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200"
-            >
-              {playing ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8 ml-1" />}
-            </button>
-
-            {/* Story Info */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-white font-bold text-lg mb-1">{currentStory.title}</h3>
-                  <p className="text-gray-300 text-sm mb-2">{currentStory.description}</p>
-                  <div className="flex items-center gap-4 text-xs text-gray-400">
-                    <span>{currentStory.duration}s</span>
-                    <span>{currentStory.views} visualizações</span>
-                    <span>{currentStory.date}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
+            {/* Overlay de stats e feedback de like */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 z-20 flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={handleLike}
-                    className="flex items-center gap-2 text-white hover:text-red-500 transition-colors"
-                  >
-                    <Heart 
-                      className={`h-6 w-6 ${liked.has(currentStory.id) ? 'fill-red-500 text-red-500' : ''}`} 
-                    />
-                    <span className="text-sm">{currentStory.likes + (liked.has(currentStory.id) ? 1 : 0)}</span>
-                  </button>
-                  <button className="flex items-center gap-2 text-white hover:text-blue-500 transition-colors">
-                    <MessageCircle className="h-6 w-6" />
-                    <span className="text-sm">Comentar</span>
-                  </button>
-                </div>
                 <div className="flex items-center gap-2">
-                  <button
-                    onClick={handleMute}
-                    className="text-white hover:text-gray-300 transition-colors"
-                  >
-                    {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-                  </button>
-                  <button className="text-white hover:text-gray-300 transition-colors">
-                    <Share2 className="h-5 w-5" />
-                  </button>
+                  <button onClick={handleLike} className={`rounded-full p-2 bg-black/60 hover:bg-red-600 transition-colors ${liked.has(currentStory.id) ? 'text-red-500' : 'text-white'}`}> <Heart className="h-5 w-5" /> </button>
+                  <span className="text-white text-sm">{currentStory.likes + (liked.has(currentStory.id) ? 1 : 0)} curtidas</span>
+                  <span className="text-gray-300 text-sm flex items-center gap-1"><MessageCircle className="h-4 w-4" /> {currentStory.views} views</span>
                 </div>
+                <button onClick={handleMute} className="rounded-full p-2 bg-black/60 hover:bg-red-600 transition-colors text-white">{muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}</button>
+              </div>
+              <div className="flex items-center gap-2 mt-2">
+                <button onClick={prevStory} disabled={active === 0} className="bg-black/60 hover:bg-red-600 text-white rounded-full p-2 disabled:opacity-40"><ChevronLeft className="h-5 w-5" /></button>
+                <button onClick={handlePlayPause} className="bg-black/60 hover:bg-red-600 text-white rounded-full p-2 mx-2">{playing ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6 ml-1" />}</button>
+                <button onClick={nextStory} disabled={active === storiesData.length - 1} className="bg-black/60 hover:bg-red-600 text-white rounded-full p-2 disabled:opacity-40"><ChevronRight className="h-5 w-5" /></button>
+              </div>
+            </div>
+            {/* Descrição do story */}
+            <div className="absolute top-20 left-0 right-0 px-6 z-10">
+              <div className="bg-black/60 rounded-lg p-3 text-white text-center text-sm shadow">
+                <div className="font-bold text-lg mb-1">{currentStory.title}</div>
+                <div>{currentStory.description}</div>
+                <div className="text-xs text-gray-300 mt-1">{currentStory.date}</div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Story Counter */}
-        <div className="text-center mt-8">
-          <p className="text-gray-400">
-            {active + 1} de {storiesData.length} stories
-          </p>
         </div>
       </div>
     </section>

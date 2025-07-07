@@ -1,5 +1,6 @@
 import { Music, Guitar, Mic, Drum } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { faker } from '@faker-js/faker';
 
 export default function MembrosPage() {
   const members = [
@@ -10,7 +11,7 @@ export default function MembrosPage() {
       bio: "Com mais de 15 anos de experiência no pagode, Rafael é a voz marcante do Grupo LIED. Sua paixão pela música começou ainda na adolescência, cantando em rodas de samba da família.",
       specialties: ["Composição", "Interpretação", "Harmonia Vocal"],
       icon: Mic,
-      image: "/placeholder.svg?height=400&width=400",
+      image: faker.image.avatar(),
       joinedYear: "2016",
     },
     {
@@ -20,7 +21,7 @@ export default function MembrosPage() {
       bio: "Carlos é o responsável pelos arranjos harmônicos únicos do grupo. Formado em música popular, traz técnica e criatividade para cada composição.",
       specialties: ["Arranjos", "Harmonia", "Improvisação"],
       icon: Guitar,
-      image: "/placeholder.svg?height=400&width=400",
+      image: faker.image.avatar(),
       joinedYear: "2016",
     },
     {
@@ -30,7 +31,7 @@ export default function MembrosPage() {
       bio: "O coração rítmico do LIED. Bruno domina diversos instrumentos de percussão e é responsável pela pegada única que caracteriza o som da banda.",
       specialties: ["Pandeiro", "Surdo", "Repique"],
       icon: Drum,
-      image: "/placeholder.svg?height=400&width=400",
+      image: faker.image.avatar(),
       joinedYear: "2016",
     },
     {
@@ -40,7 +41,7 @@ export default function MembrosPage() {
       bio: "A base sólida do grupo. Diego combina técnica apurada com groove contagiante, criando a fundação perfeita para o som do LIED.",
       specialties: ["Baixo Acústico", "Groove", "Arranjos de Base"],
       icon: Music,
-      image: "/placeholder.svg?height=400&width=400",
+      image: faker.image.avatar(),
       joinedYear: "2017",
     },
     {
@@ -50,7 +51,7 @@ export default function MembrosPage() {
       bio: "Mestre do violão de 7 cordas, Lucas adiciona sofisticação harmônica e melódica às composições, sendo também um dos principais compositores do grupo.",
       specialties: ["Violão 7 Cordas", "Composição", "Arranjos"],
       icon: Guitar,
-      image: "/placeholder.svg?height=400&width=400",
+      image: faker.image.avatar(),
       joinedYear: "2016",
     },
   ]
