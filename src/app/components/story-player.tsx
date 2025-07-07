@@ -22,7 +22,7 @@ export function StoryPlayer({ stories, activeStory, onStoryChange }: StoryPlayer
   const [loading, setLoading] = useState(false)
   const [showControls, setShowControls] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const controlsTimeoutRef = useRef<NodeJS.Timeout>()
+  const controlsTimeoutRef = useRef<NodeJS.Timeout>(null)
 
   const currentStory = stories[activeStory]
 
