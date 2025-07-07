@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX, Heart, Share2, MessageCircle } from "lucide-react"
+import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX, Heart, MessageCircle } from "lucide-react"
 
 interface Story {
   id: string
