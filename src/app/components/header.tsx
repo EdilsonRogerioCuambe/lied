@@ -9,16 +9,16 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const menuItems = [
-    { href: "#home", label: "Início" },
-    { href: "#about", label: "Sobre" },
+    { href: "/", label: "Início" },
+    { href: "/#about", label: "Sobre" },
     { href: "/historia", label: "História" },
-    { href: "#shows", label: "Shows" },
-    { href: "#merchandise", label: "Loja" },
-    { href: "#gallery", label: "Galeria" },
-    { href: "#videos", label: "Vídeos" },
-    { href: "#music", label: "Música" },
+    { href: "/#shows", label: "Shows" },
+    { href: "/#merchandise", label: "Loja" },
+    { href: "/#gallery", label: "Galeria" },
+    { href: "/#videos", label: "Vídeos" },
+    { href: "/#music", label: "Música" },
     { href: "/membros", label: "Membros" },
-    { href: "#contact", label: "Contato" },
+    { href: "/#contact", label: "Contato" },
   ]
 
   return (
