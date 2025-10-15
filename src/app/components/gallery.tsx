@@ -24,7 +24,7 @@ export function Gallery() {
   const photos: Photo[] = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&h=600&q=80",
+      src: "./gallery/galeria_um.jpg",
       alt: "Show no Parque da Cidade",
       title: "Show no Parque da Cidade",
       description: "Momento incrível durante nossa apresentação no Parque da Cidade",
@@ -35,7 +35,7 @@ export function Gallery() {
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&h=400&q=80",
+      src: "./gallery/galeria_dois.jpg",
       alt: "Ensaio no Estúdio",
       title: "Ensaio no Estúdio",
       description: "Preparando o próximo hit no nosso estúdio",
@@ -46,7 +46,7 @@ export function Gallery() {
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=500&h=700&q=80",
+      src: "./gallery/galeria_tres.jpg",
       alt: "Festival de Música",
       title: "Festival de Música",
       description: "Apresentação emocionante no maior festival da cidade",
@@ -57,7 +57,7 @@ export function Gallery() {
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=280&h=350&q=80",
+      src: "./gallery/galeria_quatro.jpg",
       alt: "Backstage",
       title: "Backstage",
       description: "Momentos especiais nos bastidores",
@@ -68,7 +68,7 @@ export function Gallery() {
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=450&h=600&q=80",
+      src: "./gallery/galeria_17.jpg",
       alt: "Show na Praça Central",
       title: "Show na Praça Central",
       description: "Conectando com o público na praça central",
@@ -79,7 +79,7 @@ export function Gallery() {
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=320&h=400&q=80",
+      src: "./gallery/galeria_18.jpg",
       alt: "Gravação do Clipe",
       title: "Gravação do Clipe",
       description: "Nos bastidores da gravação do nosso novo clipe",
@@ -90,7 +90,7 @@ export function Gallery() {
     },
     {
       id: 7,
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=380&h=500&q=80",
+      src: "./gallery/galeria_sete.jpg",
       alt: "Encontro com Fãs",
       title: "Encontro com Fãs",
       description: "Momento especial com nossos fãs mais dedicados",
@@ -101,7 +101,7 @@ export function Gallery() {
     },
     {
       id: 8,
-      src: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=260&h=320&q=80",
+      src: "./gallery/galeria_oito.jpg",
       alt: "Preparação do Show",
       title: "Preparação do Show",
       description: "Últimos ajustes antes de subir ao palco",
@@ -112,7 +112,7 @@ export function Gallery() {
     },
     {
       id: 9,
-      src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=420&h=580&q=80",
+      src: "./gallery/galeria_nove.jpg",
       alt: "Show na Casa de Shows",
       title: "Show na Casa de Shows",
       description: "Noite inesquecível na principal casa de shows",
@@ -123,7 +123,7 @@ export function Gallery() {
     },
     {
       id: 10,
-      src: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=300&h=380&q=80",
+      src: "./gallery/galeria_dez.jpg",
       alt: "Entrevista",
       title: "Entrevista",
       description: "Compartilhando nossa história em entrevista",
@@ -134,7 +134,7 @@ export function Gallery() {
     },
     {
       id: 11,
-      src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=480&h=650&q=80",
+      src: "./gallery/galeria_onze.jpg",
       alt: "Show na Universidade",
       title: "Show na Universidade",
       description: "Energia contagiante no show universitário",
@@ -145,7 +145,7 @@ export function Gallery() {
     },
     {
       id: 12,
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=290&h=360&q=80",
+      src: "./gallery/galeria_doze.jpg",
       alt: "Ensaio Acústico",
       title: "Ensaio Acústico",
       description: "Versão intimista das nossas músicas em formato acústico",
@@ -153,7 +153,7 @@ export function Gallery() {
       date: "05/11/2024",
       likes: 113,
       height: "small"
-    }
+    },
   ]
 
   const handleLike = (photoId: number) => {
@@ -202,7 +202,7 @@ export function Gallery() {
                   alt={photo.alt}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                
+
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -213,7 +213,7 @@ export function Gallery() {
                       <span className="text-gray-400 text-xs">{photo.date}</span>
                     </div>
                   </div>
-                  
+
                   {/* Action buttons */}
                   <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Button
@@ -225,8 +225,8 @@ export function Gallery() {
                         handleLike(photo.id)
                       }}
                     >
-                      <Heart 
-                        className={`h-4 w-4 ${likedPhotos.has(photo.id) ? 'fill-red-500 text-red-500' : ''}`} 
+                      <Heart
+                        className={`h-4 w-4 ${likedPhotos.has(photo.id) ? 'fill-red-500 text-red-500' : ''}`}
                       />
                     </Button>
                     <Button
@@ -256,14 +256,14 @@ export function Gallery() {
               >
                 <X className="h-6 w-6" />
               </Button>
-              
+
               <div className="bg-gray-900 rounded-lg overflow-hidden">
                 <img
                   src={selectedPhoto.src}
                   alt={selectedPhoto.alt}
                   className="max-w-full max-h-[70vh] object-contain"
                 />
-                
+
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
@@ -274,7 +274,7 @@ export function Gallery() {
                         <span className="text-gray-400">{selectedPhoto.date}</span>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-2">
                       <Button
                         size="sm"
@@ -282,8 +282,8 @@ export function Gallery() {
                         className="text-white hover:text-red-500"
                         onClick={() => handleLike(selectedPhoto.id)}
                       >
-                        <Heart 
-                          className={`h-5 w-5 mr-1 ${likedPhotos.has(selectedPhoto.id) ? 'fill-red-500 text-red-500' : ''}`} 
+                        <Heart
+                          className={`h-5 w-5 mr-1 ${likedPhotos.has(selectedPhoto.id) ? 'fill-red-500 text-red-500' : ''}`}
                         />
                         {selectedPhoto.likes + (likedPhotos.has(selectedPhoto.id) ? 1 : 0)}
                       </Button>

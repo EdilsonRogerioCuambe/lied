@@ -1,3 +1,15 @@
+## Ambiente Spotify
+
+Crie um arquivo `.env.local` na raiz com:
+
+```
+SPOTIFY_CLIENT_ID=seu_client_id
+SPOTIFY_CLIENT_SECRET=seu_client_secret
+SPOTIFY_PLAYLIST_ID=37i9dQZF1DXcBWIGoYBM5M
+```
+
+No front, as chamadas usam `/api/spotify/playlist?endpoint=...`, que obtém o token no servidor.
+
 # Lied - Grupo de Pagode
 
 [![Deploy](https://vercel.com/button)](https://vercel.com/import/project?template=nextjs)
@@ -43,6 +55,7 @@ npm run lint    # Checagem de código
 ---
 
 ## 📦 Tecnologias
+
 - Next.js 15
 - React 19
 - Tailwind CSS 4

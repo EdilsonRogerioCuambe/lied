@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(request: Request) {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
   const playlistId = process.env.SPOTIFY_PLAYLIST_ID;
@@ -31,16 +31,27 @@ export async function GET() {
     );
   }
 
-  // Fetch playlist data
-  const playlistRes = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${tokenData.access_token}`,
-      },
-    }
-  );
-  const playlistData = await playlistRes.json();
+  // Optional proxy to arbitrary Spotify endpoint from client
+  const { searchParams } = new URL(request.url);
+  const endpoint = searchParams.get("endpoint");
 
-  return NextResponse.json(playlistData);
+  const url = endpoint
+    ? `https://api.spotify.com/v1/${endpoint.replace(/^\//, "")}`
+    : `https://api.spotify.com/v1/playlists/${playlistId}`;
+
+  const apiRes = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${tokenData.access_token}`,
+    },
+  });
+
+  if (!apiRes.ok) {
+    return NextResponse.json(
+      { error: `Spotify API error: ${apiRes.status}` },
+      { status: apiRes.status }
+    );
+  }
+
+  const data = await apiRes.json();
+  return NextResponse.json(data);
 }

@@ -1,204 +1,318 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Play, Heart, Share2, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
-
+import { useState } from "react";
+import {
+  Play,
+  Youtube,
+  Eye,
+  Headphones,
+  Film,
+  Music,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 interface Video {
-  id: number
-  title: string
-  description: string
-  thumbnail: string
-  duration: string
-  views: string
-  date: string
-  url: string
-  likes: number
+  id: number;
+  title: string;
+  description: string;
+  thumbnail: string;
+  url: string;
+  youtubeId: string;
 }
 
 export function Videos() {
-  const [likedVideos, setLikedVideos] = useState<Set<number>>(new Set())
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const videos: Video[] = [
     {
       id: 1,
-      title: "LIED - Nosso Amor (Clipe Oficial)",
-      description: "Clipe oficial da nossa música mais romântica, gravado em locações especiais da cidade.",
-      thumbnail: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&h=300&q=80",
-      duration: "3:45",
-      views: "125K",
-      date: "15/12/2024",
-      url: "https://youtube.com/watch?v=dQw4w9WgXcQ",
-      likes: 2340
+      title:
+        "Grupo Lied | Cindy | Emerson Rosa - Que Bom Seria (Clipe Oficial)",
+      description:
+        "Nosso mais recente clipe oficial, filmado em locações deslumbrantes.",
+      thumbnail: "https://img.youtube.com/vi/bBCpxV2Ekag/maxresdefault.jpg",
+      url: "https://www.youtube.com/watch?v=bBCpxV2Ekag",
+      youtubeId: "bBCpxV2Ekag",
     },
     {
       id: 2,
-      title: "LIED - Saudade (Ao Vivo)",
-      description: "Performance emocionante ao vivo no nosso show mais recente.",
-      thumbnail: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&h=300&q=80",
-      duration: "4:12",
-      views: "89K",
-      date: "10/12/2024",
-      url: "https://youtube.com/watch?v=9bZkp7q19f0",
-      likes: 1567
+      title: "Grupo Lied - Ouvi Dizer",
+      description:
+        "Performance intimista de uma das nossas músicas mais queridas pelos fãs.",
+      thumbnail: "https://img.youtube.com/vi/phf8QZAZmsM/maxresdefault.jpg",
+      url: "https://www.youtube.com/watch?v=phf8QZAZmsM",
+      youtubeId: "phf8QZAZmsM",
     },
     {
       id: 3,
-      title: "LIED - Pagode na Quebrada",
-      description: "Música que representa nossa origem e conexão com a comunidade.",
-      thumbnail: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&h=300&q=80",
-      duration: "3:28",
-      views: "203K",
-      date: "05/12/2024",
-      url: "https://youtube.com/watch?v=kJQP7kiw5Fk",
-      likes: 3421
+      title: "Grupo Lied - Tudo Bem (Clipe Oficial)",
+      description:
+        "Clipe oficial gravado em locações especiais da Grande São Paulo.",
+      thumbnail: "https://img.youtube.com/vi/R51ZLDdXJsA/maxresdefault.jpg",
+      url: "https://www.youtube.com/watch?v=R51ZLDdXJsA",
+      youtubeId: "R51ZLDdXJsA",
     },
     {
       id: 4,
-      title: "LIED - Backstage do Show",
-      description: "Momentos especiais nos bastidores antes de subir ao palco.",
-      thumbnail: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&h=300&q=80",
-      duration: "2:15",
-      views: "67K",
-      date: "01/12/2024",
-      url: "https://youtube.com/watch?v=ZZ5LpwO-An4",
-      likes: 892
-    },
-    {
-      id: 5,
-      title: "LIED - Entrevista Exclusiva",
-      description: "Conversa franca sobre nossa jornada na música e próximos projetos.",
-      thumbnail: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=400&h=300&q=80",
-      duration: "8:32",
-      views: "45K",
-      date: "28/11/2024",
-      url: "https://youtube.com/watch?v=oHg5SJYRHA0",
-      likes: 1234
+      title: "Grupo Lied - Zero Vontade",
+      description:
+        "Momentos exclusivos dos bastidores da gravação do nosso mais novo trabalho.",
+      thumbnail: "https://img.youtube.com/vi/3XHZLTXLFVs/maxresdefault.jpg",
+      url: "https://www.youtube.com/watch?v=3XHZLTXLFVs",
+      youtubeId: "3XHZLTXLFVs",
     },
     {
       id: 6,
-      title: "LIED - Ensaio Acústico",
-      description: "Versão intimista das nossas músicas em formato acústico.",
-      thumbnail: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&h=300&q=80",
-      duration: "5:18",
-      views: "78K",
-      date: "25/11/2024",
-      url: "https://youtube.com/watch?v=jNQXAC9IVRw",
-      likes: 1890
-    }
-  ]
+      title: "Grupo Lied - Conversa Fiada",
+      description:
+        "Versões íntimas e acústicas dos nossos maiores sucessos românticos.",
+      thumbnail: "https://img.youtube.com/vi/spKyWq8Y4N4/maxresdefault.jpg",
+      url: "https://www.youtube.com/watch?v=spKyWq8Y4N4",
+      youtubeId: "spKyWq8Y4N4",
+    },
+  ];
 
-  const handleLike = (videoId: number) => {
-    const newLikedVideos = new Set(likedVideos)
-    if (newLikedVideos.has(videoId)) {
-      newLikedVideos.delete(videoId)
-    } else {
-      newLikedVideos.add(videoId)
-    }
-    setLikedVideos(newLikedVideos)
-  }
+  const categories = [
+    { id: "all", label: "Todos", icon: Youtube },
+    { id: "clipe", label: "Clipes", icon: Film },
+    { id: "live", label: "Ao Vivo", icon: Music },
+    { id: "acoustic", label: "Acústico", icon: Headphones },
+    { id: "backstage", label: "Bastidores", icon: Eye },
+  ];
+
+  const filteredVideos =
+    selectedCategory === "all"
+      ? videos
+      : videos.filter((video) => {
+          switch (selectedCategory) {
+            case "clipe":
+              return video.title.toLowerCase().includes("clipe");
+            case "live":
+              return video.title.toLowerCase().includes("live");
+            case "acoustic":
+              return video.title.toLowerCase().includes("acoustic");
+            case "backstage":
+              return video.title.toLowerCase().includes("backstage");
+            default:
+              return true;
+          }
+        });
 
   const handleWatchVideo = (video: Video) => {
-    window.open(video.url, '_blank')
-  }
+    window.open(video.url, "_blank");
+  };
 
   return (
-    <section id="videos" className="py-20 bg-gray-900">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            <span className="text-red-500">Vídeos</span> & Clipes
+    <section
+      id="videos"
+      className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-black via-stone-950 to-red-950/10"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white">
+            <span className="text-red-500 relative">
+              Vídeos
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-red-600 rounded-full"></div>
+            </span>{" "}
+            & Clipes
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Assista aos nossos clipes oficiais, performances ao vivo e momentos especiais nos bastidores.
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-2">
+            Assista aos nossos clipes oficiais, performances ao vivo e momentos
+            especiais nos bastidores.
           </p>
+
+          {/* YouTube Channel Stats */}
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 mt-8 text-gray-400 text-sm">
+            <div className="flex items-center gap-2">
+              <Youtube className="h-5 w-5 text-red-500" />
+              <span className="font-medium">40K+ Inscritos</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Eye className="h-5 w-5 text-red-500" />
+              <span className="font-medium">5M+ Visualizações</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Film className="h-5 w-5 text-red-500" />
+              <span className="font-medium">25+ Vídeos</span>
+            </div>
+          </div>
         </div>
 
-        {/* Videos Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {videos.map((video) => (
-            <div key={video.id} className="bg-gray-800 rounded-lg overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="relative aspect-video">
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Play button overlay */}
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button 
-                    size="lg" 
-                    className="bg-red-600 hover:bg-red-700 rounded-full w-16 h-16"
-                    onClick={() => handleWatchVideo(video)}
-                  >
-                    <Play className="h-8 w-8 ml-1" />
-                  </Button>
-                </div>
-                
-                {/* Duration badge */}
-                <div className="absolute bottom-2 right-2 bg-black/80 text-white text-sm px-2 py-1 rounded">
-                  {video.duration}
-                </div>
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12 sm:mb-16">
+          {categories.map((category) => {
+            const Icon = category.icon;
+            return (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
+                  selectedCategory === category.id
+                    ? "bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/30"
+                    : "bg-stone-800/50 backdrop-blur-sm text-gray-300 hover:bg-stone-700/50 border border-stone-700"
+                }`}
+              >
+                <Icon className="h-4 w-4" />
+                <span className="text-sm sm:text-base">{category.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Featured Video - First video larger */}
+        {filteredVideos.length > 0 && (
+          <div className="mb-12 sm:mb-16">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full text-sm font-semibold">
+                  <Youtube className="h-4 w-4" />
+                  Em Destaque
+                </span>
               </div>
-              
-              <div className="p-6">
-                <h3 className="text-white font-bold text-lg mb-2 line-clamp-2">{video.title}</h3>
-                <p className="text-gray-300 text-sm mb-4 line-clamp-2">{video.description}</p>
-                
-                <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
-                  <span>{video.views} visualizações</span>
-                  <span>{video.date}</span>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
+
+              <Card className="group p-0 bg-gradient-to-br from-stone-900/80 to-stone-950/80 backdrop-blur-sm border border-stone-800 hover:border-red-500/50 transition-all duration-500 overflow-hidden shadow-2xl">
+                <div className="relative aspect-video">
+                  <Image
+                    src={filteredVideos[0].thumbnail}
+                    alt={filteredVideos[0].title}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    loading="eager"
+                    width={800}
+                    height={450}
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+                  {/* Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-gray-400 hover:text-red-500"
-                      onClick={() => handleLike(video.id)}
+                      size="lg"
+                      className="bg-red-600/90 hover:bg-red-700 backdrop-blur-sm rounded-full w-20 h-20 border-4 border-white/20 shadow-2xl hover:scale-110 transition-all duration-300"
+                      onClick={() => handleWatchVideo(filteredVideos[0])}
                     >
-                      <Heart 
-                        className={`h-4 w-4 mr-1 ${likedVideos.has(video.id) ? 'fill-red-500 text-red-500' : ''}`} 
+                      <Play
+                        className="h-8 w-8 ml-1 text-white"
+                        fill="currentColor"
                       />
-                      {video.likes + (likedVideos.has(video.id) ? 1 : 0)}
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-gray-400 hover:text-red-500"
-                    >
-                      <Share2 className="h-4 w-4" />
                     </Button>
                   </div>
-                  
+
+                  {/* Info Overlay */}
+                  <div className="absolute bottom-4 left-4 right-20">
+                    <h3 className="text-white font-bold text-xl sm:text-2xl mb-2">
+                      {filteredVideos[0].title}
+                    </h3>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        )}
+
+        {/* Videos Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
+          {filteredVideos.slice(1).map((video) => (
+            <Card
+              key={video.id}
+              className="group p-0 bg-gradient-to-br from-stone-900/80 to-stone-950/80 backdrop-blur-sm border border-stone-800 hover:border-red-500/50 transition-all duration-500 hover:scale-[1.02] shadow-xl hover:shadow-2xl hover:shadow-red-500/10 overflow-hidden"
+            >
+              <div className="relative aspect-video">
+                <Image
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  width={400}
+                  height={225}
+                />
+
+                {/* Play button overlay */}
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <Button
-                    size="sm"
-                    className="bg-red-600 hover:bg-red-700"
+                    size="lg"
+                    className="bg-red-600/90 hover:bg-red-700 backdrop-blur-sm rounded-full w-16 h-16 border-2 border-white/20 shadow-xl hover:scale-110 transition-all duration-300"
                     onClick={() => handleWatchVideo(video)}
                   >
-                    <ExternalLink className="h-4 w-4 mr-1" />
-                    Assistir
+                    <Play
+                      className="h-6 w-6 ml-0.5 text-white"
+                      fill="currentColor"
+                    />
                   </Button>
                 </div>
               </div>
-            </div>
+
+              <CardContent className="p-4 sm:p-6">
+                <h3 className="text-white font-bold text-lg mb-2 line-clamp-2 group-hover:text-red-400 transition-colors">
+                  {video.title}
+                </h3>
+                <p className="text-gray-400 text-sm mb-4 line-clamp-2 leading-relaxed">
+                  {video.description}
+                </p>
+
+                <div className="flex items-center justify-between">
+                  <Button
+                    size="sm"
+                    className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold hover:scale-105 transition-all duration-300"
+                    onClick={() => handleWatchVideo(video)}
+                  >
+                    <Play className="h-4 w-4 mr-1" />
+                    <span className="hidden sm:inline">Assistir</span>
+                    <span className="sm:hidden">Play</span>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-gray-300 mb-6">
-            Não perca nenhum vídeo novo! Inscreva-se no nosso canal.
-          </p>
-          <Button size="lg" className="bg-red-600 hover:bg-red-700">
-            <ExternalLink className="h-5 w-5 mr-2" />
-            Ver Canal Completo
-          </Button>
+        <div className="text-center mt-16 sm:mt-20">
+          <div className="inline-flex flex-col items-center gap-6 p-6 sm:p-8 bg-gradient-to-r from-stone-900/50 to-red-950/20 backdrop-blur-sm rounded-2xl border border-stone-800">
+            <div className="text-center">
+              <h3 className="text-white text-xl sm:text-2xl font-bold mb-2 flex items-center justify-center gap-2">
+                <Youtube className="h-6 w-6 text-red-500" />
+                Canal do YouTube
+              </h3>
+              <p className="text-gray-400 text-sm sm:text-base">
+                Inscreva-se para não perder nenhum vídeo novo! Conteúdo
+                exclusivo toda semana.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-3 font-semibold hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30"
+                onClick={() =>
+                  window.open("https://www.youtube.com/@GrupoLied", "_blank")
+                }
+              >
+                <Youtube className="h-5 w-5 mr-2" />
+                Inscrever-se
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-red-500 text-red-400 hover:bg-red-600 hover:text-white hover:border-red-600 bg-transparent px-8 py-3 font-semibold hover:scale-105 transition-all duration-300"
+                onClick={() =>
+                  window.open(
+                    "https://www.youtube.com/@GrupoLied/videos",
+                    "_blank"
+                  )
+                }
+              >
+                <Film className="h-5 w-5 mr-2" />
+                Todos os Vídeos
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  )
-} 
+  );
+}
