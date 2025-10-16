@@ -1,14 +1,11 @@
-import { Contact } from "../components/contact";
-import { About } from "../components/about";
-import { Gallery } from "../components/gallery";
-import { Videos } from "../components/videos";
-import { Hero } from "../components/hero";
-// import { Merchandise } from "../components/merchandise";
-import { Shows } from "../components/shows";
-import Members from "../components/members";
+import { About } from "./_components/about";
+import { Contact } from "./_components/contact";
+import { Gallery } from "./_components/gallery";
+import { Hero } from "./_components/hero";
+import { Videos } from "./_components/videos";
+import Members from "./_components/members";
 
 export default function Home() {
-      console.log("🚀 ~ Home ~ <Shows />:", <Shows />)
   return (
     <div className="min-h-screen bg-stone-900 text-white">
       <Hero />
@@ -21,5 +18,5 @@ export default function Home() {
       <Members />
       <Contact />
     </div>
-  )
+  );
 }

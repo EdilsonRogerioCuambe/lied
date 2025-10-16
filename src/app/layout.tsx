@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Bungee, Poppins } from "next/font/google";
-import { Footer } from "./components/footer";
-import { Header } from "./components/header";
+import { Footer } from "./(site)/_components/footer";
+import { Header } from "./(site)/_components/header";
 import "./globals.css";
 
 const bungee = Bungee({
