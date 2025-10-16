@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Download, Heart, Share2, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useState } from "react";
 
 interface Photo {
@@ -12,13 +12,11 @@ interface Photo {
   description: string;
   event: string;
   date: string;
-  likes: number;
   height: "small" | "medium" | "large" | "xlarge";
 }
 
 export function Gallery() {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
-  const [likedPhotos, setLikedPhotos] = useState<Set<number>>(new Set());
 
   const photos: Photo[] = [
     {
@@ -29,7 +27,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 128,
       height: "large",
     },
     {
@@ -40,7 +37,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 89,
       height: "medium",
     },
     {
@@ -51,7 +47,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 256,
       height: "xlarge",
     },
     {
@@ -62,7 +57,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 67,
       height: "small",
     },
     {
@@ -73,7 +67,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 189,
       height: "large",
     },
     {
@@ -84,7 +77,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 145,
       height: "medium",
     },
     {
@@ -95,7 +87,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 203,
       height: "large",
     },
     {
@@ -106,7 +97,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 78,
       height: "small",
     },
     {
@@ -117,7 +107,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 167,
       height: "large",
     },
     {
@@ -128,7 +117,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 92,
       height: "medium",
     },
     {
@@ -139,7 +127,6 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 234,
       height: "xlarge",
     },
     {
@@ -150,20 +137,9 @@ export function Gallery() {
       description: "",
       event: "",
       date: "",
-      likes: 113,
       height: "small",
     },
   ];
-
-  const handleLike = (photoId: number) => {
-    const newLikedPhotos = new Set(likedPhotos);
-    if (newLikedPhotos.has(photoId)) {
-      newLikedPhotos.delete(photoId);
-    } else {
-      newLikedPhotos.add(photoId);
-    }
-    setLikedPhotos(newLikedPhotos);
-  };
 
   const getHeightClass = (height: Photo["height"]) => {
     switch (height) {
@@ -212,54 +188,8 @@ export function Gallery() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
 
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-semibold text-lg mb-1">
-                      {photo.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm mb-2">
-                      {photo.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-red-400 text-xs font-medium">
-                        {photo.event}
-                      </span>
-                      <span className="text-gray-400 text-xs">
-                        {photo.date}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Action buttons */}
-                  <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 p-0"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleLike(photo.id);
-                      }}
-                    >
-                      <Heart
-                        className={`h-4 w-4 ${
-                          likedPhotos.has(photo.id)
-                            ? "fill-red-500 text-red-500"
-                            : ""
-                        }`}
-                      />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 p-0"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Share2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
+                {/* Simple hover overlay only for visual depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           ))}
@@ -284,60 +214,7 @@ export function Gallery() {
                   alt={selectedPhoto.alt}
                   className="max-w-full max-h-[70vh] object-contain"
                 />
-
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-white font-bold text-xl mb-2">
-                        {selectedPhoto.title}
-                      </h3>
-                      <p className="text-gray-300 mb-2">
-                        {selectedPhoto.description}
-                      </p>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <span className="text-red-400 font-medium">
-                          {selectedPhoto.event}
-                        </span>
-                        <span className="text-gray-400">
-                          {selectedPhoto.date}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-white hover:text-red-500"
-                        onClick={() => handleLike(selectedPhoto.id)}
-                      >
-                        <Heart
-                          className={`h-5 w-5 mr-1 ${
-                            likedPhotos.has(selectedPhoto.id)
-                              ? "fill-red-500 text-red-500"
-                              : ""
-                          }`}
-                        />
-                        {selectedPhoto.likes +
-                          (likedPhotos.has(selectedPhoto.id) ? 1 : 0)}
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-white hover:text-red-500"
-                      >
-                        <Share2 className="h-5 w-5" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-white hover:text-red-500"
-                      >
-                        <Download className="h-5 w-5" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
+                {/* No metadata or actions; image-only modal */}
               </div>
             </div>
           </div>
