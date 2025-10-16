@@ -1,17 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Play,
-  Youtube,
-  Eye,
-  Headphones,
-  Film,
-  Music,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Eye, Film, Headphones, Music, Play, Youtube } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+// Removed local players; we now link to external platforms only
 
 interface Video {
   id: number;
@@ -73,6 +67,8 @@ export function Videos() {
       youtubeId: "spKyWq8Y4N4",
     },
   ];
+
+  // Local videos removed due to repository size limits. Keep external links only.
 
   const categories = [
     { id: "all", label: "Todos", icon: Youtube },
@@ -162,7 +158,26 @@ export function Videos() {
           })}
         </div>
 
-        {/* Featured Video - First video larger */}
+        {/* Featured Local Music Video - replaced with external link CTA */}
+        <div className="mb-12 sm:mb-16">
+          <div className="max-w-5xl mx-auto text-center">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full text-sm font-semibold mb-4">
+              <Film className="h-4 w-4" />
+              Clipe em Destaque
+            </span>
+            <div className="mt-4">
+              <Button
+                size="lg"
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+                onClick={() => window.open(videos[0].url, "_blank")}
+              >
+                <Play className="h-4 w-4 mr-2" /> Assistir no YouTube
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Featured Video - First YouTube larger */}
         {filteredVideos.length > 0 && (
           <div className="mb-12 sm:mb-16">
             <div className="max-w-4xl mx-auto">
@@ -267,6 +282,31 @@ export function Videos() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Reels Section - external */}
+        <div className="mt-16 sm:mt-20">
+          <div className="text-center mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full text-sm font-semibold">
+              <Film className="h-4 w-4" />
+              Reels
+            </span>
+          </div>
+          <div className="text-center">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-red-500 text-red-400 hover:bg-red-600 hover:text-white hover:border-red-600 bg-transparent px-8 py-3 font-semibold hover:scale-105 transition-all duration-300"
+              onClick={() =>
+                window.open(
+                  "https://www.instagram.com/grupolied/reels/",
+                  "_blank"
+                )
+              }
+            >
+              Ver Reels no Instagram
+            </Button>
+          </div>
         </div>
 
         {/* Call to Action */}

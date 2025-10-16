@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Grupo Lied",
   },
   description:
-    "O melhor do pagode brasileiro! Veja fotos, vídeos, shows, stories e ouça a playlist oficial do Grupo Lied.",
+    "Grupo Lied: pagode de São Paulo desde 2016. Vídeos, reels, shows, histórias e playlist oficial.",
   keywords: [
     "pagode",
     "grupo lied",
@@ -46,12 +46,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Grupo Lied | Pagode, Shows e Música ao Vivo",
     description:
-      "O melhor do pagode brasileiro! Veja fotos, vídeos, shows, stories e ouça a playlist oficial do Grupo Lied.",
+      "Grupo Lied: pagode de São Paulo desde 2016. Vídeos, reels, shows, histórias e playlist oficial.",
     url: "https://grupolied.com.br",
     siteName: "Grupo Lied",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80",
+        url: "https://grupolied.com.br/images/Lied_01.png",
         width: 1200,
         height: 630,
         alt: "Grupo Lied ao vivo",
@@ -64,10 +64,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Grupo Lied | Pagode, Shows e Música ao Vivo",
     description:
-      "O melhor do pagode brasileiro! Veja fotos, vídeos, shows, stories e ouça a playlist oficial do Grupo Lied.",
-    images: [
-      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80",
-    ],
+      "Grupo Lied: pagode de São Paulo desde 2016. Vídeos, reels, shows, histórias e playlist oficial.",
+    images: ["https://grupolied.com.br/images/Lied_01.png"],
     creator: "@grupolied",
   },
   metadataBase: new URL("https://grupolied.com.br"),

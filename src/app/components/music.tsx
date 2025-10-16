@@ -392,16 +392,11 @@ export function MusicSection() {
             </div>
             <div className="flex items-center gap-2 bg-stone-900/50 px-3 py-1 rounded-full">
               <Users className="h-4 w-4 text-red-500" />
-              <span>
-                {totalListeners > 0
-                  ? `${Math.round(totalListeners / 1000)}K`
-                  : "40K+"}{" "}
-                Seguidores
-              </span>
+              <span>18,5K IG • 1,03K YT</span>
             </div>
             <div className="flex items-center gap-2 bg-stone-900/50 px-3 py-1 rounded-full">
               <Music className="h-4 w-4 text-red-500" />
-              <span>{tracks.length} Faixas</span>
+              <span>Spotify: 160 seg • 275 ouv/mês</span>
             </div>
           </div>
 

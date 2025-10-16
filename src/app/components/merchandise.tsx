@@ -28,7 +28,7 @@ export function Merchandise() {
   const [products, setProducts] = useState<any[]>([]);
 
   const handleWhatsAppClick = (productName: string, selectedSize?: string) => {
-    const phoneNumber = "5511999999999"; // Substitua pelo número de WhatsApp real
+    const phoneNumber = "5511981231025"; // Número real de WhatsApp
     const sizeText = selectedSize ? ` - Tamanho: ${selectedSize}` : "";
     const message = `Olá! Tenho interesse no produto "${productName}"${sizeText}. Poderia me dar mais informações sobre preço e disponibilidade?`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(

@@ -1,180 +1,184 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { X, Heart, Share2, Download } from "lucide-react"
-import { Button } from "@/components/ui/button"
-
+import { Button } from "@/components/ui/button";
+import { Download, Heart, Share2, X } from "lucide-react";
+import { useState } from "react";
 
 interface Photo {
-  id: number
-  src: string
-  alt: string
-  title: string
-  description: string
-  event: string
-  date: string
-  likes: number
-  height: "small" | "medium" | "large" | "xlarge"
+  id: number;
+  src: string;
+  alt: string;
+  title: string;
+  description: string;
+  event: string;
+  date: string;
+  likes: number;
+  height: "small" | "medium" | "large" | "xlarge";
 }
 
 export function Gallery() {
-  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
-  const [likedPhotos, setLikedPhotos] = useState<Set<number>>(new Set())
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const [likedPhotos, setLikedPhotos] = useState<Set<number>>(new Set());
 
   const photos: Photo[] = [
     {
       id: 1,
       src: "./gallery/galeria_um.jpg",
-      alt: "Show no Parque da Cidade",
-      title: "Show no Parque da Cidade",
-      description: "Momento incrível durante nossa apresentação no Parque da Cidade",
-      event: "Show ao Vivo",
-      date: "15/12/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 128,
-      height: "large"
+      height: "large",
     },
     {
       id: 2,
       src: "./gallery/galeria_dois.jpg",
-      alt: "Ensaio no Estúdio",
-      title: "Ensaio no Estúdio",
-      description: "Preparando o próximo hit no nosso estúdio",
-      event: "Ensaio",
-      date: "10/12/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 89,
-      height: "medium"
+      height: "medium",
     },
     {
       id: 3,
       src: "./gallery/galeria_tres.jpg",
-      alt: "Festival de Música",
-      title: "Festival de Música",
-      description: "Apresentação emocionante no maior festival da cidade",
-      event: "Festival",
-      date: "05/12/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 256,
-      height: "xlarge"
+      height: "xlarge",
     },
     {
       id: 4,
       src: "./gallery/galeria_quatro.jpg",
-      alt: "Backstage",
-      title: "Backstage",
-      description: "Momentos especiais nos bastidores",
-      event: "Backstage",
-      date: "01/12/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 67,
-      height: "small"
+      height: "small",
     },
     {
       id: 5,
       src: "./gallery/galeria_17.jpg",
-      alt: "Show na Praça Central",
-      title: "Show na Praça Central",
-      description: "Conectando com o público na praça central",
-      event: "Show ao Vivo",
-      date: "28/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 189,
-      height: "large"
+      height: "large",
     },
     {
       id: 6,
       src: "./gallery/galeria_18.jpg",
-      alt: "Gravação do Clipe",
-      title: "Gravação do Clipe",
-      description: "Nos bastidores da gravação do nosso novo clipe",
-      event: "Gravação",
-      date: "25/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 145,
-      height: "medium"
+      height: "medium",
     },
     {
       id: 7,
       src: "./gallery/galeria_sete.jpg",
-      alt: "Encontro com Fãs",
-      title: "Encontro com Fãs",
-      description: "Momento especial com nossos fãs mais dedicados",
-      event: "Meet & Greet",
-      date: "20/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 203,
-      height: "large"
+      height: "large",
     },
     {
       id: 8,
       src: "./gallery/galeria_oito.jpg",
-      alt: "Preparação do Show",
-      title: "Preparação do Show",
-      description: "Últimos ajustes antes de subir ao palco",
-      event: "Preparação",
-      date: "18/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 78,
-      height: "small"
+      height: "small",
     },
     {
       id: 9,
       src: "./gallery/galeria_nove.jpg",
-      alt: "Show na Casa de Shows",
-      title: "Show na Casa de Shows",
-      description: "Noite inesquecível na principal casa de shows",
-      event: "Show ao Vivo",
-      date: "15/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 167,
-      height: "large"
+      height: "large",
     },
     {
       id: 10,
       src: "./gallery/galeria_dez.jpg",
-      alt: "Entrevista",
-      title: "Entrevista",
-      description: "Compartilhando nossa história em entrevista",
-      event: "Entrevista",
-      date: "12/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 92,
-      height: "medium"
+      height: "medium",
     },
     {
       id: 11,
       src: "./gallery/galeria_onze.jpg",
-      alt: "Show na Universidade",
-      title: "Show na Universidade",
-      description: "Energia contagiante no show universitário",
-      event: "Show ao Vivo",
-      date: "08/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 234,
-      height: "xlarge"
+      height: "xlarge",
     },
     {
       id: 12,
       src: "./gallery/galeria_doze.jpg",
-      alt: "Ensaio Acústico",
-      title: "Ensaio Acústico",
-      description: "Versão intimista das nossas músicas em formato acústico",
-      event: "Ensaio",
-      date: "05/11/2024",
+      alt: "",
+      title: "",
+      description: "",
+      event: "",
+      date: "",
       likes: 113,
-      height: "small"
+      height: "small",
     },
-  ]
+  ];
 
   const handleLike = (photoId: number) => {
-    const newLikedPhotos = new Set(likedPhotos)
+    const newLikedPhotos = new Set(likedPhotos);
     if (newLikedPhotos.has(photoId)) {
-      newLikedPhotos.delete(photoId)
+      newLikedPhotos.delete(photoId);
     } else {
-      newLikedPhotos.add(photoId)
+      newLikedPhotos.add(photoId);
     }
-    setLikedPhotos(newLikedPhotos)
-  }
+    setLikedPhotos(newLikedPhotos);
+  };
 
   const getHeightClass = (height: Photo["height"]) => {
     switch (height) {
-      case "small": return "h-64"
-      case "medium": return "h-80"
-      case "large": return "h-96"
-      case "xlarge": return "h-[28rem]"
-      default: return "h-80"
+      case "small":
+        return "h-64";
+      case "medium":
+        return "h-80";
+      case "large":
+        return "h-96";
+      case "xlarge":
+        return "h-[28rem]";
+      default:
+        return "h-80";
     }
-  }
+  };
 
   return (
     <section id="gallery" className="py-20 bg-black">
@@ -184,7 +188,8 @@ export function Gallery() {
             <span className="text-red-500">Galeria</span> de Momentos
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Cada foto conta uma história. Reviva os momentos mais especiais do Grupo Lied através dos nossos eventos e shows.
+            Cada foto conta uma história. Reviva os momentos mais especiais do
+            Grupo Lied através dos nossos eventos e shows.
           </p>
         </div>
 
@@ -196,7 +201,11 @@ export function Gallery() {
               className={`break-inside-avoid mb-4 group cursor-pointer`}
               onClick={() => setSelectedPhoto(photo)}
             >
-              <div className={`relative bg-gray-800 rounded-lg overflow-hidden ${getHeightClass(photo.height)}`}>
+              <div
+                className={`relative bg-gray-800 rounded-lg overflow-hidden ${getHeightClass(
+                  photo.height
+                )}`}
+              >
                 <img
                   src={photo.src}
                   alt={photo.alt}
@@ -206,11 +215,19 @@ export function Gallery() {
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-semibold text-lg mb-1">{photo.title}</h3>
-                    <p className="text-gray-300 text-sm mb-2">{photo.description}</p>
+                    <h3 className="text-white font-semibold text-lg mb-1">
+                      {photo.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-2">
+                      {photo.description}
+                    </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-red-400 text-xs font-medium">{photo.event}</span>
-                      <span className="text-gray-400 text-xs">{photo.date}</span>
+                      <span className="text-red-400 text-xs font-medium">
+                        {photo.event}
+                      </span>
+                      <span className="text-gray-400 text-xs">
+                        {photo.date}
+                      </span>
                     </div>
                   </div>
 
@@ -221,12 +238,16 @@ export function Gallery() {
                       variant="ghost"
                       className="bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 p-0"
                       onClick={(e) => {
-                        e.stopPropagation()
-                        handleLike(photo.id)
+                        e.stopPropagation();
+                        handleLike(photo.id);
                       }}
                     >
                       <Heart
-                        className={`h-4 w-4 ${likedPhotos.has(photo.id) ? 'fill-red-500 text-red-500' : ''}`}
+                        className={`h-4 w-4 ${
+                          likedPhotos.has(photo.id)
+                            ? "fill-red-500 text-red-500"
+                            : ""
+                        }`}
                       />
                     </Button>
                     <Button
@@ -267,11 +288,19 @@ export function Gallery() {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-white font-bold text-xl mb-2">{selectedPhoto.title}</h3>
-                      <p className="text-gray-300 mb-2">{selectedPhoto.description}</p>
+                      <h3 className="text-white font-bold text-xl mb-2">
+                        {selectedPhoto.title}
+                      </h3>
+                      <p className="text-gray-300 mb-2">
+                        {selectedPhoto.description}
+                      </p>
                       <div className="flex items-center space-x-4 text-sm">
-                        <span className="text-red-400 font-medium">{selectedPhoto.event}</span>
-                        <span className="text-gray-400">{selectedPhoto.date}</span>
+                        <span className="text-red-400 font-medium">
+                          {selectedPhoto.event}
+                        </span>
+                        <span className="text-gray-400">
+                          {selectedPhoto.date}
+                        </span>
                       </div>
                     </div>
 
@@ -283,9 +312,14 @@ export function Gallery() {
                         onClick={() => handleLike(selectedPhoto.id)}
                       >
                         <Heart
-                          className={`h-5 w-5 mr-1 ${likedPhotos.has(selectedPhoto.id) ? 'fill-red-500 text-red-500' : ''}`}
+                          className={`h-5 w-5 mr-1 ${
+                            likedPhotos.has(selectedPhoto.id)
+                              ? "fill-red-500 text-red-500"
+                              : ""
+                          }`}
                         />
-                        {selectedPhoto.likes + (likedPhotos.has(selectedPhoto.id) ? 1 : 0)}
+                        {selectedPhoto.likes +
+                          (likedPhotos.has(selectedPhoto.id) ? 1 : 0)}
                       </Button>
                       <Button
                         size="sm"
@@ -310,5 +344,5 @@ export function Gallery() {
         )}
       </div>
     </section>
-  )
+  );
 }

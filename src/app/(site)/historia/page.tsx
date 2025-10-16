@@ -4,90 +4,82 @@ import { Award, Calendar, Heart, Music, Star, Users } from "lucide-react";
 export default function HistoriaPage() {
   const timeline = [
     {
-      year: "2019",
-      title: "Formação do Grupo",
+      year: "2016",
+      title: "Formação e Primeiros Ensaios",
       description:
-        "O Grupo LIED nasce da paixão de cinco amigos pelo pagode autêntico, com o sonho de levar alegria através da música.",
+        "Início do LIED com ensaios entre amigos em São Paulo. Tony assume o cavaquinho e a administração; WK na percussão geral; PET traz a influência do rap e do samba; formação ganha corpo.",
       icon: Users,
       color: "bg-red-600",
     },
     {
-      year: "2020",
-      title: "Primeiro Show",
+      year: "2017-2019",
+      title: "Palcos da Cidade",
       description:
-        "Estreia oficial em um bar na zona sul de São Paulo, conquistando o público com interpretações únicas dos clássicos do pagode.",
+        "Série de apresentações em casas de show e eventos da região metropolitana de São Paulo, consolidando repertório e presença de palco.",
       icon: Music,
       color: "bg-orange-600",
     },
     {
-      year: "2021",
-      title: "Primeira Composição",
+      year: "2020-2021",
+      title: "Expansão e Conteúdo",
       description:
-        "Lançamento da primeira música autoral 'Nosso Amor', que rapidamente se tornou um sucesso nas rádios locais.",
+        "Produção de conteúdos digitais e crescimento nas redes, com vídeos e clipes que aumentam o alcance do grupo.",
       icon: Heart,
       color: "bg-pink-600",
     },
     {
-      year: "2022",
+      year: "2022-2023",
       title: "Reconhecimento Regional",
       description:
-        "Participação em festivais importantes de São Paulo e interior, consolidando a presença no cenário paulista.",
+        "Participações em festivais e eventos no estado de São Paulo e interior, ampliando a base de fãs e agenda.",
       icon: Star,
       color: "bg-yellow-600",
     },
     {
-      year: "2023",
-      title: "Era Digital",
+      year: "2024",
+      title: "Novas Vozes",
       description:
-        "Adaptação ao formato digital durante a pandemia, com lives que alcançaram milhares de visualizações.",
+        "Entrada do vocalista Tiago Fizan, agregando potência vocal e novas possibilidades de arranjos.",
       icon: Calendar,
       color: "bg-blue-600",
     },
     {
       year: "2024",
-      title: "Primeiro Álbum",
+      title: "Clipe e Reels",
       description:
-        "Lançamento do álbum 'Raízes do Pagode' com 12 faixas autorais, marcando a maturidade artística do grupo.",
+        "Lançamento de materiais audiovisuais, incluindo clipe oficial e conteúdos em formato vertical (reels).",
       icon: Award,
       color: "bg-green-600",
     },
     {
       year: "2025",
-      title: "Expansão Nacional",
+      title: "Presente",
       description:
-        "Turnê nacional com shows em mais de 15 estados, levando o pagode LIED para todo o Brasil.",
+        "Agenda ativa, presença digital e fortalecimento da base de fãs. Próximos passos incluem novas músicas e parcerias.",
       icon: Music,
       color: "bg-purple-600",
-    },
-    {
-      year: "2024",
-      title: "Consolidação",
-      description:
-        "Mais de 200 shows realizados, 50 mil seguidores nas redes sociais e reconhecimento como uma das principais bandas de pagode do país.",
-      icon: Award,
-      color: "bg-red-600",
     },
   ];
 
   const achievements = [
     {
-      title: "200+ Shows Realizados",
-      description: "Apresentações em todo o Brasil",
+      title: "Agenda Ativa",
+      description: "Apresentações frequentes na Grande São Paulo",
       icon: Music,
     },
     {
-      title: "40K+ Seguidores",
-      description: "Comunidade fiel nas redes sociais",
+      title: "19,5K+ Seguidores",
+      description: "Instagram + YouTube",
       icon: Users,
     },
     {
-      title: "15+ Composições Autorais",
-      description: "Repertório próprio consolidado",
+      title: "Conteúdo em Vídeo",
+      description: "Clipe oficial e reels publicados",
       icon: Heart,
     },
     {
-      title: "5+ Anos de Estrada",
-      description: "Experiência e maturidade artística",
+      title: "Desde 2016",
+      description: "Experiência e evolução contínua",
       icon: Calendar,
     },
   ];

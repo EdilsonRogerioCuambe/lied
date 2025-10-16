@@ -6,7 +6,6 @@ import {
   Calendar,
   ExternalLink,
   Instagram,
-  Mail,
   MapPin,
   Music,
   Phone,
@@ -21,7 +20,7 @@ export function Contact() {
       icon: Instagram,
       label: "Instagram",
       href: "https://instagram.com/grupolied",
-      followers: "45K",
+      followers: "18,5 mil",
       description: "Fotos e stories dos nossos shows",
       color: "from-pink-500 to-purple-600",
     },
@@ -29,7 +28,7 @@ export function Contact() {
       icon: Youtube,
       label: "YouTube",
       href: "https://youtube.com/@grupolied",
-      followers: "12K",
+      followers: "1,03 mil",
       description: "Vídeos completos e clipes musicais",
       color: "from-red-500 to-red-600",
     },
@@ -37,7 +36,7 @@ export function Contact() {
       icon: Music,
       label: "Spotify",
       href: "https://open.spotify.com/artist/grupolied",
-      followers: "8K",
+      followers: "160",
       description: "Nossa discografia completa",
       color: "from-green-500 to-green-600",
     },
@@ -47,16 +46,9 @@ export function Contact() {
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "(11) 99999-9999",
-      href: "https://wa.me/5511999999999",
+      value: "+55 11 98123-1025",
+      href: "https://wa.me/5511981231025",
       description: "Contratações e informações",
-    },
-    {
-      icon: Mail,
-      label: "E-mail",
-      value: "contato@grupolied.com.br",
-      href: "mailto:contato@grupolied.com.br",
-      description: "Contato comercial",
     },
     {
       icon: MapPin,
@@ -73,6 +65,15 @@ export function Contact() {
     href: "https://drive.google.com/drive/folders/LIED",
     icon: "📁",
   };
+
+  // Spotify city insights for progress bars
+  const spotifyCities = [
+    { city: "São Paulo, BR", listeners: 49 },
+    { city: "Rio de Janeiro, BR", listeners: 17 },
+    { city: "Porto Alegre, BR", listeners: 12 },
+    { city: "Salvador, BR", listeners: 11 },
+    { city: "Belo Horizonte, BR", listeners: 11 },
+  ];
 
   return (
     <section id="contact" className="py-8 md:py-16 lg:py-20 bg-black">
@@ -200,7 +201,8 @@ export function Contact() {
 
           {/* Social Media */}
           <div className="space-y-6">
-            <Card className="bg-gradient-to-br from-stone-900/80 to-stone-950/80 backdrop-blur-sm border border-stone-800">
+            <Card className="bg-gradient-to-br from-stone-900/80 to-stone-950/80 backdrop-blur-sm border border-stone-800 relative overflow-hidden">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-red-500/5 via-transparent to-red-600/5" />
               <CardHeader className="pb-3 md:pb-6">
                 <CardTitle className="text-white text-lg md:text-2xl font-bold flex items-center gap-2 md:gap-3">
                   <Instagram className="h-5 w-5 md:h-7 md:w-7 text-red-500" />
@@ -214,28 +216,28 @@ export function Contact() {
                 {socialLinks.map((social, index) => (
                   <div
                     key={index}
-                    className="group p-3 md:p-4 lg:p-6 bg-stone-800/50 rounded-xl hover:bg-stone-800/70 transition-all duration-300 hover:scale-[1.01] md:hover:scale-[1.02] cursor-pointer active:scale-[0.99]"
+                    className="group p-3 md:p-4 lg:p-6 bg-stone-900/60 rounded-2xl border border-stone-700 hover:border-red-500/50 transition-all duration-300 hover:scale-[1.01] md:hover:scale-[1.02] cursor-pointer active:scale-[0.99] shadow-sm hover:shadow-red-500/10"
                     onClick={() => window.open(social.href, "_blank")}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
                         <div
-                          className={`w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br ${social.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
+                          className={`w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br ${social.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0 ring-1 ring-white/10`}
                         >
-                          <social.icon className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                          <social.icon className="h-6 w-6 md:h-7 md:w-7 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                            <h4 className="text-white font-semibold text-sm md:text-lg group-hover:text-red-400 transition-colors">
+                            <h4 className="text-white font-semibold text-base md:text-lg group-hover:text-red-400 transition-colors">
                               {social.label}
                             </h4>
                             <ExternalLink className="h-3 w-3 md:h-4 md:w-4 text-gray-500 group-hover:text-red-400 transition-colors" />
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-xs md:text-sm">
-                            <span className="text-red-400 font-medium">
+                          <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm">
+                            <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-red-600/15 text-red-400 border border-red-600/30 font-medium">
                               {social.followers} seguidores
                             </span>
-                            <span className="hidden sm:inline text-gray-500">
+                            <span className="text-gray-400 hidden sm:inline">
                               •
                             </span>
                             <span className="text-gray-400 text-xs sm:text-sm">
@@ -246,13 +248,74 @@ export function Contact() {
                       </div>
                       <Button
                         size="sm"
-                        className={`bg-gradient-to-r ${social.color} hover:scale-105 transition-all duration-300 text-white font-semibold shadow-lg flex-shrink-0 text-xs md:text-sm px-2 md:px-3`}
+                        className={`bg-gradient-to-r ${social.color} hover:scale-105 transition-all duration-300 text-white font-semibold shadow-lg flex-shrink-0 text-xs md:text-sm px-3 md:px-4 rounded-full`}
                       >
                         Seguir
                       </Button>
                     </div>
                   </div>
                 ))}
+              </CardContent>
+            </Card>
+
+            {/* Spotify Insights */}
+            <Card className="bg-gradient-to-br from-stone-900/80 to-stone-950/80 backdrop-blur-sm border border-stone-800 relative overflow-hidden">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-green-500/5 via-transparent to-green-600/5" />
+              <CardHeader className="pb-3 md:pb-6">
+                <CardTitle className="text-white text-lg md:text-2xl font-bold flex items-center gap-2 md:gap-3">
+                  <Music className="h-5 w-5 md:h-7 md:w-7 text-green-500" />
+                  Spotify – Insights
+                </CardTitle>
+                <p className="text-gray-400 text-sm md:text-base">
+                  Audiência atual e cidades que mais escutam
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                  <div className="p-3 md:p-4 rounded-2xl bg-stone-900/60 border border-stone-700">
+                    <p className="text-gray-400 text-xs md:text-sm">
+                      Seguidores
+                    </p>
+                    <p className="text-white text-lg md:text-2xl font-bold">
+                      160
+                    </p>
+                  </div>
+                  <div className="p-3 md:p-4 rounded-2xl bg-stone-900/60 border border-stone-700">
+                    <p className="text-gray-400 text-xs md:text-sm">
+                      Ouvintes mensais
+                    </p>
+                    <p className="text-white text-lg md:text-2xl font-bold">
+                      275
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-5 space-y-3">
+                  {spotifyCities.map(({ city, listeners }) => {
+                    const max = 49; // maior valor para normalizar
+                    const width = Math.max(
+                      8,
+                      Math.round((listeners / max) * 100)
+                    );
+                    return (
+                      <div key={city} className="">
+                        <div className="flex items-center justify-between mb-1">
+                          <p className="text-white text-sm md:text-base font-medium">
+                            {city}
+                          </p>
+                          <p className="text-gray-400 text-xs md:text-sm">
+                            {listeners} ouvintes
+                          </p>
+                        </div>
+                        <div className="h-2.5 bg-stone-800 rounded-full overflow-hidden border border-stone-700">
+                          <div
+                            className="h-full bg-gradient-to-r from-green-500 to-green-600"
+                            style={{ width: `${width}%` }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </CardContent>
             </Card>
 
@@ -271,22 +334,11 @@ export function Contact() {
                     size="lg"
                     className="bg-red-600 hover:bg-red-700 text-white font-semibold hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto text-sm md:text-base"
                     onClick={() =>
-                      window.open("https://wa.me/5511999999999", "_blank")
+                      window.open("https://wa.me/5511981231025", "_blank")
                     }
                   >
                     <Phone className="h-4 w-4 md:h-5 md:w-5 mr-2" />
                     WhatsApp
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="hover:text-black font-semibold hover:scale-105 transition-all duration-300 w-full sm:w-auto text-sm md:text-base"
-                    onClick={() =>
-                      window.open("mailto:contato@grupolied.com.br", "_blank")
-                    }
-                  >
-                    <Mail className="h-4 w-4 md:h-5 md:w-5 mr-2" />
-                    E-mail
                   </Button>
                 </div>
               </CardContent>

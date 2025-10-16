@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export function About() {
   const stats = [
-    { icon: Users, label: "Seguidores", value: "40K+" },
-    { icon: Music, label: "Shows", value: "200+" },
-    { icon: Heart, label: "Anos", value: "5+" },
-    { icon: Star, label: "Sucessos", value: "15+" },
+    { icon: Users, label: "Seguidores (IG+YT)", value: "19,5K+" },
+    { icon: Music, label: "Spotify Seguidores", value: "160" },
+    { icon: Heart, label: "Ouvintes Mensais (Spotify)", value: "275" },
+    { icon: Star, label: "Cidades Top (BR)", value: "5" },
   ];
 
   return (

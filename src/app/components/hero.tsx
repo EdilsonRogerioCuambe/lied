@@ -52,7 +52,7 @@ export function Hero() {
       </div>
 
       {/* Background Image - Dispositivos Pequenos (mobile) */}
-      <div className="absolute inset-0 w-full h-full block md:hidden">
+      <div className="absolute opacity-70 inset-0 w-full h-full block md:hidden">
         <Image
           src="/images/Lied_01.png"
           alt="Background"
@@ -61,12 +61,10 @@ export function Hero() {
             objectFit: "cover",
             objectPosition: "center top",
           }}
-          className="pointer-events-none select-none opacity-20"
+          className="pointer-events-none select-none"
           priority
           quality={100}
         />
-        {/* Overlay gradiente forte para mobile */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
