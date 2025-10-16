@@ -239,30 +239,7 @@ export function Videos() {
           ))}
         </div>
 
-        {/* Reels Section - external */}
-        <div className="mt-16 sm:mt-20">
-          <div className="text-center mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full text-sm font-semibold">
-              <Film className="h-4 w-4" />
-              Reels
-            </span>
-          </div>
-          <div className="text-center">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-red-500 text-red-400 hover:bg-red-600 hover:text-white hover:border-red-600 bg-transparent px-8 py-3 font-semibold hover:scale-105 transition-all duration-300"
-              onClick={() =>
-                window.open(
-                  "https://www.instagram.com/grupolied/reels/",
-                  "_blank"
-                )
-              }
-            >
-              Ver Reels no Instagram
-            </Button>
-          </div>
-        </div>
+        {/* Reels Section removed to simplify the layout */}
 
         {/* Call to Action */}
         <div className="text-center mt-16 sm:mt-20">
