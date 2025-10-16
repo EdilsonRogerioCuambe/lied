@@ -21,7 +21,7 @@ export default function Members() {
       bio: "Sou o PET (REC). Cresci no ambiente do samba com meus tios, que tinham um grupo e me levaram para as rodas desde cedo. Tentei cavaco e pandeiro no começo, ouvi que faltava ritmo, mas insisti. Mais tarde me apaixonei pelo rap: passei a escrever, rimar e cantar. Hoje trago essa mistura do rap com o samba para o LIED.",
       specialties: ["Rap", "Composição", "Performance"],
       icon: Mic,
-      image: "/members/PET1B.png",
+      image: "/gallery/galeria_20.jpg",
       joinedYear: "2016",
     },
     {
@@ -31,7 +31,7 @@ export default function Members() {
       bio: "Sou o Augusto Cícero da Silva, o WK. Comecei aos 9 anos tocando reco com meu pai e os amigos dele. Tive vários professores (e meu pai) que me passaram base e linguagem de percussão. De tatazinho a pandeiro, fui ampliando para percussão geral. Toquei em vários grupos da cidade, fiz freelas, conheci o LIED, já fui da banda e hoje sou da capa, assinando a percussão geral.",
       specialties: ["Percussão Geral", "Pandeiro", "Groove"],
       icon: Drum,
-      image: "/members/WK4.png",
+      image: "/gallery/galeria_dez.jpg",
       joinedYear: "2016",
     },
     {
@@ -41,7 +41,7 @@ export default function Members() {
       bio: "Meu nome artístico é Tiago Fizan. Tive contato com a música ainda pequeno, aos seis anos, e cantei no coral da escola. Na igreja, com minha mãe, fortalecei a voz e a presença. Passei por dois grupos, iniciei carreira solo e hoje, há cerca de nove meses no LIED, trago a voz como meu principal instrumento.",
       specialties: ["Voz", "Interpretação", "Coral"],
       icon: Mic,
-      image: "/images/TH1.png",
+      image: "/gallery/galeria_um.jpg",
       joinedYear: "2024",
     },
   ];
