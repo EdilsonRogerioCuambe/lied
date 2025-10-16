@@ -120,21 +120,7 @@ export function Videos() {
             especiais nos bastidores.
           </p>
 
-          {/* YouTube Channel Stats */}
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 mt-8 text-gray-400 text-sm">
-            <div className="flex items-center gap-2">
-              <Youtube className="h-5 w-5 text-red-500" />
-              <span className="font-medium">40K+ Inscritos</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Eye className="h-5 w-5 text-red-500" />
-              <span className="font-medium">5M+ Visualizações</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Film className="h-5 w-5 text-red-500" />
-              <span className="font-medium">25+ Vídeos</span>
-            </div>
-          </div>
+          {/* Channel stats removed for a cleaner layout */}
         </div>
 
         {/* Category Filter */}
@@ -158,24 +144,7 @@ export function Videos() {
           })}
         </div>
 
-        {/* Featured Local Music Video - replaced with external link CTA */}
-        <div className="mb-12 sm:mb-16">
-          <div className="max-w-5xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full text-sm font-semibold mb-4">
-              <Film className="h-4 w-4" />
-              Clipe em Destaque
-            </span>
-            <div className="mt-4">
-              <Button
-                size="lg"
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
-                onClick={() => window.open(videos[0].url, "_blank")}
-              >
-                <Play className="h-4 w-4 mr-2" /> Assistir no YouTube
-              </Button>
-            </div>
-          </div>
-        </div>
+        {/* Featured clip section removed; the first card below already highlights a video */}
 
         {/* Featured Video - First YouTube larger */}
         {filteredVideos.length > 0 && (
@@ -233,7 +202,10 @@ export function Videos() {
           {filteredVideos.slice(1).map((video) => (
             <Card
               key={video.id}
-              className="group p-0 bg-gradient-to-br from-stone-900/80 to-stone-950/80 backdrop-blur-sm border border-stone-800 hover:border-red-500/50 transition-all duration-500 hover:scale-[1.02] shadow-xl hover:shadow-2xl hover:shadow-red-500/10 overflow-hidden"
+              className="group p-0 bg-gradient-to-br from-stone-900/80 to-stone-950/80 backdrop-blur-sm border border-stone-800 hover:border-red-500/50 transition-all duration-500 hover:scale-[1.02] shadow-xl hover:shadow-2xl hover:shadow-red-500/10 overflow-hidden cursor-pointer"
+              onClick={() => handleWatchVideo(video)}
+              role="button"
+              tabIndex={0}
             >
               <div className="relative aspect-video">
                 <Image
@@ -247,16 +219,9 @@ export function Videos() {
 
                 {/* Play button overlay */}
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button
-                    size="lg"
-                    className="bg-red-600/90 hover:bg-red-700 backdrop-blur-sm rounded-full w-16 h-16 border-2 border-white/20 shadow-xl hover:scale-110 transition-all duration-300"
-                    onClick={() => handleWatchVideo(video)}
-                  >
-                    <Play
-                      className="h-6 w-6 ml-0.5 text-white"
-                      fill="currentColor"
-                    />
-                  </Button>
+                  <div className="rounded-full w-16 h-16 border-2 border-white/20 bg-red-600/90 flex items-center justify-center shadow-xl">
+                    <Play className="h-6 w-6 text-white" fill="currentColor" />
+                  </div>
                 </div>
               </div>
 
@@ -268,17 +233,7 @@ export function Videos() {
                   {video.description}
                 </p>
 
-                <div className="flex items-center justify-between">
-                  <Button
-                    size="sm"
-                    className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold hover:scale-105 transition-all duration-300"
-                    onClick={() => handleWatchVideo(video)}
-                  >
-                    <Play className="h-4 w-4 mr-1" />
-                    <span className="hidden sm:inline">Assistir</span>
-                    <span className="sm:hidden">Play</span>
-                  </Button>
-                </div>
+                {/* Removed per-card action button; click the card to play */}
               </CardContent>
             </Card>
           ))}
